@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Picotron Web Player</title>
+  </head>
+
+  <body>
+    <script src="./player.js"></script>
+    <div id="psolitaire_suite-2" class="playarea_0" style="width: 100%">
+      <div
+        id="p8_frame_0"
+        style="
+          display: none;
+          width: 100%;
+          height: 100%;
+          max-width: 95vw;
+          max-height: 95vh;
+          min-width: 256px;
+          min-height: 256px;
+          margin: auto;
+          background-color: #111;
+        "
+      >
+        <div
+          id="p8_frame"
+          style="
+            display: flex;
+            width: 100%;
+            height: 100%;
+            min-width: 256px;
+            min-height: 256px;
+            margin: auto;
+          "
+        >
+          <textarea
+            id="codo_textarea_solitaire_suite-2"
+            class="emscripten"
+            style="
+              display: none;
+              position: absolute;
+              left: -9999px;
+              height: 0px;
+              overflow: hidden;
+            "
+          ></textarea
+          ><input
+            id="p8_file_chooser"
+            type="file"
+            name="name"
+            style="display: none"
+            onchange="p8_drop_file(event)"
+          />
+          <div style="position: absolute">
+            <div
+              id="cart_menu_solitaire_suite-2"
+              style="
+                display: none;
+                position: absolute;
+                width: 568px;
+                height: 512px;
+                max-width: 568px;
+                max-height: 512px;
+                z-index: 200;
+                overflow: hidden;
+                padding: 0px;
+              "
+            >
+              <div
+                style="
+                  background: rgba(24, 24, 42, 0.95);
+                  position: relative;
+                  top: 0px;
+                  left: 0px;
+                  margin: 0px;
+                  display: block;
+                  width: 560px;
+                  height: 504px;
+                  padding-left: 8px;
+                  padding-top: 8px;
+                  overflow: hidden;
+                "
+              >
+                <div
+                  style="
+                    margin: 8px;
+                    margin-top: 12px;
+                    margin-bottom: 20px;
+                    width: 100%;
+                    height: 128px;
+                    float: left;
+                  "
+                >
+                  <div
+                    style="
+                      margin-top: 8px;
+                      margin-left: px;
+                      width: 128px;
+                      height: 128px;
+                      float: left;
+                      background: url('/bbs/thumbs/pico64_solitaire_suite-2.png')
+                        no-repeat center;
+                      -webkit-background-size: cover;
+                      -moz-background-size: cover;
+                      -o-background-size: cover;
+                      background-size: cover;
+                    "
+                  ></div>
+                  <div style="padding: 8px; padding-left: 32px; display: table">
+                    <a
+                      target="_parent"
+                      href="https://www.lexaloffle.com/bbs/?pid=solitaire_suite#p"
+                    >
+                      <div
+                        style="font-size: 16pt; color: #fff; margin-bottom: 8px"
+                      >
+                        solitaire_suite
+                      </div>
+                    </a>
+                    <div style="padding-bottom: 12px">
+                      <a
+                        target="_parent"
+                        style="color: #fab"
+                        href="/bbs/cposts/so/solitaire_suite-2.p64.png"
+                        >Cart File</a
+                      >
+                      |
+                      <a
+                        target="_parent"
+                        style="color: #fab"
+                        href="https://www.lexaloffle.com/bbs/?pid=solitaire_suite-2#p"
+                        >Forum Post</a
+                      >
+                      |
+                    </div>
+                    <table cellpadding="0" cellspacing="8">
+                      <tbody>
+                        <tr>
+                          <td rowspan="2">
+                            <a
+                              target="_parent"
+                              href="https://www.lexaloffle.com/bbs/?uid=80204"
+                              ><img src="/media/80204/robot.png" width="48"
+                            /></a>
+                          </td>
+                          <td>
+                            <a
+                              target="_parent"
+                              style="color: #fab"
+                              href="https://www.lexaloffle.com/bbs/?uid=80204&amp;mode=carts"
+                              >More cartridges</a
+                            >
+                            by
+                            <a
+                              target="_parent"
+                              href="https://www.lexaloffle.com/bbs/?uid=80204"
+                              ><b>Werxzy</b></a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a
+                              target="_rss"
+                              href="/bbs/feed.php?uid=80204"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_rss.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_home"
+                              href="https://werxzy.itch.io/"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_home.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_mastodon"
+                              href="https://mastodon.social/@Werxzy"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_mastodon.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_twitter"
+                              href="https://twitter.com/werxzy1"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_twitter.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_youtube"
+                              href="https://youtube.com/@werxzy"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_youtube.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_itch"
+                              href="https://werxzy.itch.io/"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_itch.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              /> </a
+                            ><a
+                              target="_twitch"
+                              href="https://twitch.tv/werxzy"
+                              class="social_button"
+                            >
+                              <img
+                                src="/gfx/so_twitch.png"
+                                width="24"
+                                height="24"
+                                style="
+                                  float: left;
+                                  margin-left: 4px;
+                                  margin-top: 0px;
+                                  margin-bottom: 4px;
+                                "
+                              />
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: table;
+                    font-size: 14pt;
+                    color: #fff;
+                    width: 100%;
+                    padding: 4px;
+                    padding-top: 24px;
+                  "
+                >
+                  More Cartridges
+                  <a
+                    target="_parent"
+                    style="font-size: 10pt; color: #aaa"
+                    href="https://www.lexaloffle.com/bbs/?cat=8#sub=2&amp;mode=carts"
+                    >[View All]</a
+                  >
+                </div>
+                <div id="more_carts_solitaire_suite-2"></div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="p8_container"
+            style="margin: auto; display: flex; width: 0px; height: 0px"
+            onclick="if (!p8_is_running) {p8_create_audio_context(); p8_run_cart('/play/picotron.js', 'solitaire_suite-2', '/bbs/cposts/so/solitaire_suite-2.p64.png');}"
+          >
+            <div
+              id="p8_playarea"
+              style="
+                display: none;
+                margin-right: auto;
+                margin-bottom: auto;
+                margin-left: auto;
+                user-select: none;
+              "
+            >
+              <div
+                id="touch_controls_background"
+                style="
+                  pointer-events: none;
+                  display: none;
+                  background-color: #000;
+                  opacity: 0.5;
+                  position: fixed;
+                  top: 0px;
+                  left: 0px;
+                  border: 0;
+                  width: 100vw;
+                  height: 200vh;
+                  overflow: hidden;
+                "
+              >
+                &nbsp;
+              </div>
+
+              <div
+                id="p8_playarea_flex"
+                style="display: flex; position: relative"
+              >
+                <canvas
+                  class="emscripten"
+                  id="canvas"
+                  oncontextmenu="event.preventDefault();"
+                  style="
+                    width: 0px;
+                    height: 0px;
+                    margin-left: 0px;
+                    margin-top: 0px;
+                  "
+                >
+                </canvas>
+              </div>
+
+              <!-- display after first layout update -->
+
+              <div
+                id="touch_controls_gfx"
+                style="
+                  pointer-events: none;
+                  display: none;
+                  position: fixed;
+                  top: 0px;
+                  left: 0px;
+                  border: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                "
+              >
+                <img
+                  src=""
+                  id="controls_right_panel"
+                  style="position: absolute; opacity: 0.5"
+                />
+                <img
+                  src=""
+                  id="controls_left_panel"
+                  style="position: absolute; opacity: 0.5"
+                />
+              </div>
+              <!-- touch_controls_gfx -->
+
+              <div
+                id="touch_keyboard_gfx"
+                style="
+                  pointer-events: none;
+                  display: none;
+                  position: fixed;
+                  top: 0px;
+                  left: 0px;
+                  border: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                "
+              >
+                <img
+                  src=""
+                  id="controls_keyboard_panel"
+                  style="position: absolute; opacity: 0.5"
+                />
+              </div>
+              <!-- touch_keyboard_gfx -->
+            </div>
+            <!--p8_playarea -->
+          </div>
+          <!-- p8_container -->
+        </div>
+        <!-- p8_frame -->
+      </div>
+      <!-- size limit -->
+
+      <script type="text/javascript">
+        p8_update_layout();
+        p8_update_button_icons();
+
+        var canvas = document.getElementById("canvas");
+        Module = {};
+        Module.canvas = canvas;
+        Module.arguments = ["/bbs/cposts/so/solitaire_suite-2.p64.png"];
+      </script>
+      <div
+        id="cart_player_solitaire_suite-2"
+        style="
+          overflow: hidden;
+          display: table;
+          width: 960px;
+          max-width: 95vw;
+          height: 540px;
+          max-height: 95vw;
+          background-color: #111;
+        "
+      >
+        <div
+          class="dormant_player"
+          id="cart_player_dormant_solitaire_suite-2"
+          style="position: relative"
+        >
+          <div
+            style="
+              position: absolute;
+              z-index: 20;
+              padding: 8px;
+              max-width: 960px;
+            "
+          >
+            <div style="font-size: 15pt">
+              <a href="https://www.lexaloffle.com/bbs/?pid=solitaire_suite#p"
+                >solitaire_suite</a
+              >
+            </div>
+            <div style="font-size: 11pt; margin-top: 4px">
+              by <a href="https://www.lexaloffle.com/bbs/?uid=80204">Werxzy</a>
+            </div>
+          </div>
+
+          <center>
+            <div
+              style="
+                display: table;
+                position: relative;
+                background-color: #000;
+                width: 960;
+                height: 540;
+                max-width: 95vw;
+                max-height: 95vw;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  position: absolute;
+                  z-index: 10;
+                  width: 100%;
+                  height: 100%;
+                  align-items: center;
+                "
+              >
+                <img
+                  style="
+                    cursor: pointer;
+                    width: 80px;
+                    height: 80px;
+                    margin: auto;
+                  "
+                  onclick="activate_p8_player('/play/picotron.js', 'solitaire_suite-2', '/bbs/cposts/so/solitaire_suite-2.p64.png', 'cart_player_solitaire_suite-2', 'cart_player_dormant_solitaire_suite-2');"
+                  src="/gfx/play80.png"
+                />
+              </div>
+
+              <img
+                src="/bbs/thumbs/pico64_solitaire_suite-2.png"
+                style="opacity: 0.7; width: 100%; height: 100%"
+              />
+            </div>
+          </center>
+        </div>
+        <!-- dormant -->
+      </div>
+      <div
+        style="
+          display: table;
+          width: 100%;
+          background-color: #222;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        "
+      >
+        <div
+          class="desktop_div"
+          style="margin-top: 4px; margin-left: 8px; float: left"
+        >
+          <a href="/bbs/cposts/so/solitaire_suite-2.p64.png"
+            ><img src="/gfx/cart32.png" width="16" height="20"
+          /></a>
+        </div>
+
+        <div style="margin-top: 6px; margin-left: 4px; float: left">
+          <font color="#999" size="1">
+            <a
+              title="Open Cartridge File"
+              href="/bbs/cposts/so/solitaire_suite-2.p64.png"
+              >Cart</a
+            >
+            #solitaire_suite-2 |
+            <span title="2024-04-04 22:52:23">2024-04-04</span>
+
+            <span class="desktop_div">
+              |
+              <a
+                style="cursor: pointer"
+                onclick="
+ 		
+ 		var el = document.getElementById('cartembed_solitaire_suite-2');
+ 		
+ 		if (el.style.display == 'none')
+ 			el.style.display = '';
+ 		else
+ 			el.style.display = 'none';
+ 	"
+              >
+                Embed ▽</a
+              >
+            </span>
+            | <span class="desktop_div" style="color: #666">License:</span>
+            <a
+              target="_cc4"
+              href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+              style="color: #aaa"
+              >CC4-BY-NC-SA</a
+            >
+          </font>
+        </div>
+        <font color="#999" size="1">
+          <div
+            class="desktop_div"
+            style="float: right; margin-right: 10px; margin-top: 2px"
+          >
+            <div
+              style="display: flex; align-items: center; cursor: pointer"
+              class="rate_145162_like"
+              onclick="
+				toggle_set_button('rate_145162_like', 145162, 'like', 1);
+			"
+            >
+              <div
+                style="display: table; width: 20px; height: 20px"
+                title="Give this post a star"
+                class="i_rate_145162_like"
+              >
+                <img src="/gfx/set_like1.png" width="20" height="20" />
+              </div>
+              <div
+                style="
+                  margin-left: 4px;
+                  margin-right: 6px;
+                  margin-top: 2px;
+                  font-size: 9pt;
+                  color: #bbb;
+                "
+              >
+                120
+              </div>
+            </div>
+          </div>
+          <div
+            class="desktop_div"
+            style="float: right; margin-right: 10px; margin-top: 2px"
+          >
+            <div
+              style="display: flex; align-items: center; cursor: pointer"
+              class="rate_145162_fav"
+              onclick="
+				toggle_set_button('rate_145162_fav', 145162, 'fav', 2);
+			"
+            >
+              <div
+                style="display: table; width: 20px; height: 20px"
+                title="Add to your favourites collection"
+                class="i_rate_145162_fav"
+              >
+                <img src="/gfx/set_fav1.png" width="20" height="20" />
+              </div>
+            </div>
+          </div>
+        </font>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picotron Wiki</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png">
+    <script type="importmap">
+    {
+        "imports": {
+            "@codemirror/state": "/dist/@codemirror/state.js",
+            "@codemirror/language": "/dist/@codemirror/language.js",
+            "@replit/codemirror-vim": "/dist/@replit/codemirror-vim.js",
+            "@lezer/lr": "/dist/@lezer/lr.js",
+            "@lezer/common": "/dist/@lezer/common.js",
+            "@codemirror/search": "/dist/@codemirror/search.js",
+            "@codemirror/view": "/dist/@codemirror/view.js",
+            "@codemirror/commands": "/dist/@codemirror/commands.js",
+            "@lezer/highlight": "/dist/@lezer/highlight.js",
+            "style-mod": "/dist/style-mod.js",
+            "crelt": "/dist/crelt.js",
+            "w3c-keyname": "/dist/w3c-keyname.js",
+            "lezer-lua": "/lezer-lua/index.js"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+    <script type="module">
+        const panel = document.getElementById("panel");
+        const tray = document.getElementById("panel");
+        let down = false;
+        let positon = 0;
+        panel.addEventListener("pointerdown", event => {
+            panel.setPointerCapture(event.pointerId);
+            down = true;
+        });
+        panel.addEventListener("pointerup", event => {
+            panel.releasePointerCapture(event.pointerId);
+            down = false;
+        });
+        panel.addEventListener("pointermove", event => {
+            if (down) {
+                positon = Math.max(0, Math.min(positon + event.movementY, window.innerHeight));
+                document.body.style.setProperty("--panel-position", `${positon}px`);
+            }
+        });
+        // FIXME: Why is this never fired for links?
+        tray.addEventListener("drop", event => {
+            event.preventDefault();
+            console.log("drop!");
+        });
+        tray.addEventListener("dragenter", event => {
+            event.preventDefault();
+            console.log("dragenter!");
+        });
+        tray.addEventListener("dragover", event => {
+            event.dataTransfer.dropEffect = "copy";
+            event.preventDefault();
+            console.log("dragover!");
+        });
+    </script>
+    <script type="module">
+        const DEFAULT_COLORS = [
+            "#000000",
+            "#1d2b53",
+            "#7e2553",
+            "#008751",
+            "#ab5236",
+            "#5f574f",
+            "#c2c3c7",
+            "#fff1e8",
+            "#ff004d",
+            "#ffa300",
+            "#ffec27",
+            "#00e436",
+            "#29adff",
+            "#83769c",
+            "#ff77a8",
+            "#ffccaa",
+            "#1c5eac",
+            "#00a5a1",
+            "#754e97",
+            "#125359",
+            "#742f29",
+            "#492d38",
+            "#a28879",
+            "#ffacc5",
+            "#c3004c",
+            "#eb6b00",
+            "#90ec42",
+            "#00b251",
+            "#64dff6",
+            "#bd9adf",
+            "#e40dab",
+            "#ff856d",
+        ];
+        const settings = document.getElementById("settings");
+        const colorInputs = settings.querySelectorAll("input[type=color]");
+        console.assert(colorInputs.length === 32, "Wrong number of color inputs in settings");
+        for (let i = 0; i < 32; i++) {
+            const input = colorInputs[i];
+            input.value = localStorage.getItem(`color-${i}`) ?? DEFAULT_COLORS[i];
+            document.body.style.setProperty(`--color-${i}`, input.value);
+            input.addEventListener("input", event => {
+                console.log("input", event);
+                document.body.style.setProperty(`--color-${i}`, event.target.value);
+            });
+            input.addEventListener("change", event => {
+                console.log("change", event);
+                localStorage.setItem(`color-${i}`, event.target.value);
+            });
+        }
+        const resetButton = settings.querySelector("#reset-colors");
+        resetButton.addEventListener("click", event => {
+            for (let i = 0; i < 32; i++) {
+                colorInputs[i].value = DEFAULT_COLORS[i];
+                document.body.style.setProperty(`--color-${i}`, DEFAULT_COLORS[i]);
+                document.body.style.setProperty(`--color-${i}`, DEFAULT_COLORS[i]);
+            }
+        });
+    </script>
+    <script type="module">
+        if (!("anchorName" in document.documentElement.style)) {
+            import("https://unpkg.com/@oddbird/css-anchor-positioning");
+        }
+    </script>
+</head>
+<body>
+    <!-- <div id="panel"></div> -->
+    <div class="tray">
+        <div class="eyeballs">
+            <div class="eyeball"></div>
+            <div class="eyeball"></div>
+            <script>
+                const eyeballs = document.querySelectorAll(".eyeball");
+                window.addEventListener("pointermove", event => {
+                    for (const eyeball of eyeballs) {
+                        const { left, top } = eyeball.getBoundingClientRect();
+                        eyeball.style.setProperty("--eyeball-target-x", `${event.clientX - left - 30}px`);
+                        eyeball.style.setProperty("--eyeball-target-y", `${event.clientY - top - 30}px`);
+                    }
+                    // document.body.style.setProperty("--eyeball-target-x", `${event.clientX}px`);
+                    // document.body.style.setProperty("--eyeball-target-y", `${event.clientY}px`);
+                });
+            </script>
+        </div>
+        <a href="https://example.com/" class="file" data-filename="test.txt" style="--x: 100px; --y: 100px;"></a>
+        {# <button onclick="alert(1);">Alert!</button> #}
+        <!-- <div class="file" data-filename="test.txt" style="--x: 100px; --y: 100px;"></div> -->
+    </div>
+    <div class="wrapper">
+        <header id="panel">
+            <a class="logo" href="/" title="Home page">
+                <img class="panel-icon" src="desktop/picotron.png">
+            </a>
+            <a href="https://github.com/bbb651/picotron" title="Github repository">
+                <img src="github.png" width="64" height="64">
+            </a>
+            <section class="search" role="search">
+                <input type="text" placeholder="Search"/>
+            </section>
+            <button type="button" popovertarget="settings">
+                <img popovertarget="settings" class="panel-icon" src="desktop/settings.png">
+            </button>
+            <div popover id="settings">
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <br/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <br/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <br/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <input type="color"/>
+                <br/>
+                <button id="reset-colors">Reset Colors</button>
+                <label><input id="test" name="Test" type="checkbox"/>Vim Mode</label>
+            </div>
+        </header>
+        <aside class="toc">
+            {{ toc }}
+        </aside>
+        <main>
+            {{ content }}
+        </main>
+        <aside class="sidebar">
+            {{ sidebar }}
+        </aside>
+        <aside class="pages">
+            {{ pages }}
+        </aside>
+        <footer>
+            {{ footer }}
+        </footer>
+    </div>
+</body>
+</html>

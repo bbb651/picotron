@@ -1,0 +1,9 @@
+[project]
+name = "picotron.wiki"
+version = "0.0.0"
+dependencies = [
+  "jinja2",
+  "markdown-it-py",
+  "markdown-it-py[linkify]",
+  "mdit-py-plugins",
+]
